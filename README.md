@@ -20,7 +20,10 @@
 PYTHONPATH=src python3 -m unittest discover -s tests
 PYTHONPATH=src python3 -m sourcing_agent.cli run-daily --dry-run
 PYTHONPATH=src python3 -m sourcing_agent.cli show-digest
+PYTHONPATH=src python3 -m sourcing_agent.cli review-queue
 ```
+
+更完整的中文说明见：`docs/使用说明.md`。
 
 ## 配置文件
 
@@ -33,3 +36,7 @@ PYTHONPATH=src python3 -m sourcing_agent.cli show-digest
 - 系统不会自动发邮件，只生成草稿。
 - 华人/中国相关判断允许简单启发式，但必须标记为低/中/高置信度。
 - 所有高分判断都应保留来源 URL、理由和 evidence。
+
+## 当前状态
+
+这是可运行 MVP，不是生产系统。当前 `run-daily --dry-run` 使用确定性的样例数据，方便验证完整链路；真实来源抓取函数已经按 source 拆开，后续可以逐个接入真实 API key 和网页来源。

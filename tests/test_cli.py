@@ -22,7 +22,8 @@ class CliTests(unittest.TestCase):
     def test_review_queue_cli(self):
         with tempfile.TemporaryDirectory() as tmp:
             db_path = Path(tmp) / "test.db"
-            main(["run-daily", "--dry-run", "--db", str(db_path)])
+            with redirect_stdout(io.StringIO()):
+                main(["run-daily", "--dry-run", "--db", str(db_path)])
             output = io.StringIO()
             with redirect_stdout(output):
                 code = main(["review-queue", "--db", str(db_path)])
@@ -37,4 +38,3 @@ class CliTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
