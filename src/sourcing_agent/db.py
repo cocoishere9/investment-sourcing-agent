@@ -43,7 +43,8 @@ def init_db(conn: sqlite3.Connection) -> None:
             url TEXT NOT NULL,
             language TEXT NOT NULL,
             approved INTEGER NOT NULL DEFAULT 0,
-            payload TEXT NOT NULL
+            payload TEXT NOT NULL,
+            UNIQUE(url, language)
         )
         """
     )
@@ -89,7 +90,7 @@ def list_processed_signals(conn: sqlite3.Connection) -> List[ProcessedSignal]:
 def save_outreach_draft(conn: sqlite3.Connection, draft: OutreachDraft) -> None:
     conn.execute(
         """
-        INSERT INTO outreach_drafts (url, language, approved, payload)
+        INSERT OR REPLACE INTO outreach_drafts (url, language, approved, payload)
         VALUES (?, ?, ?, ?)
         """,
         (
@@ -117,4 +118,3 @@ def list_outreach_drafts(conn: sqlite3.Connection) -> List[OutreachDraft]:
             )
         )
     return drafts
-

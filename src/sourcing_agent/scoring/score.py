@@ -16,6 +16,10 @@ def _has_any(text: str, words: List[str]) -> bool:
     return any(word.lower() in text for word in words)
 
 
+def _has_email_contact(signal: ProcessedSignal) -> bool:
+    return any("@" in path for path in signal.contact_paths)
+
+
 def _theme_fit(signal: ProcessedSignal, weight: int, taste: Dict[str, Any]) -> int:
     return weight if _has_any(_text(signal), taste.get("preferred_themes", [])) else 0
 
@@ -40,7 +44,7 @@ def _score_company(signal: ProcessedSignal, weights: Dict[str, int], taste: Dict
         "traction": weights["traction"] if _has_any(text, ["yc", "customer", "revenue", "demo", "invested", "funding"]) else 0,
         "timing": weights["timing"] if _has_any(text, ["launch", "new", "recent", "2026"]) or signal.item.published_at else 0,
         "china_affinity": _china_points(signal, weights["china_affinity"]),
-        "contactability": weights["contactability"] if signal.contact_paths else 0,
+        "contactability": weights["contactability"] if _has_email_contact(signal) else 0,
     }
 
 
@@ -63,7 +67,7 @@ def _score_repo(signal: ProcessedSignal, weights: Dict[str, int], taste: Dict[st
         "commercialization": weights["commercialization"] if _has_any(text, ["platform", "infra", "enterprise", "agents", "robotics", "hardware"]) else 0,
         "maintainer_credibility": weights["maintainer_credibility"] if extracted.get("owner") else 0,
         "theme_fit": _theme_fit(signal, weights["theme_fit"], taste),
-        "contactability": weights["contactability"] if signal.contact_paths else 0,
+        "contactability": weights["contactability"] if _has_email_contact(signal) else 0,
     }
 
 
@@ -137,7 +141,7 @@ def score_signal(signal: ProcessedSignal, taste: Dict[str, Any] = None, rubrics:
 
     raw_score = _clamp(raw_score)
     outreach_score = raw_score
-    if not signal.contact_paths:
+    if not _has_email_contact(signal):
         outreach_score = min(outreach_score, int(rubrics["caps"]["no_contact_outreach"]))
         caps_applied.append("no_contact_outreach")
     if not signal.evidence:
@@ -161,4 +165,3 @@ def score_signal(signal: ProcessedSignal, taste: Dict[str, Any] = None, rubrics:
         caps_applied=caps_applied,
         penalties_applied=penalties_applied,
     )
-
