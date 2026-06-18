@@ -1,0 +1,46 @@
+company:
+  theme_fit: 20
+  founder_signal: 20
+  product_clarity: 15
+  traction: 15
+  timing: 10
+  china_affinity: 10
+  contactability: 10
+
+repo:
+  growth_momentum: 25
+  maintenance: 15
+  technical_depth: 20
+  commercialization: 15
+  maintainer_credibility: 10
+  theme_fit: 10
+  contactability: 5
+
+paper:
+  novelty: 25
+  commercialization: 20
+  author_credibility: 15
+  implementation: 15
+  theme_fit: 15
+  freshness: 5
+  china_affinity: 5
+
+post:
+  signal_quality: 25
+  interaction_quality: 20
+  traceability: 20
+  freshness: 15
+  theme_fit: 10
+  contact_path: 10
+
+caps:
+  no_url: 50
+  no_contact_outreach: 50
+  post_without_traceable_entity: 65
+  stale_artifact: 60
+
+penalties:
+  pure_wrapper: 20
+  too_late_stage: 15
+  duplicate_without_new_event: 10
+

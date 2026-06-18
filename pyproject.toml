@@ -1,0 +1,13 @@
+[project]
+name = "investment-sourcing-agent"
+version = "0.1.0"
+description = "AI investment sourcing workflow with typed processors, scoring rubrics, memos, and outreach drafts."
+requires-python = ">=3.9"
+
+[project.scripts]
+sourcing-agent = "sourcing_agent.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+

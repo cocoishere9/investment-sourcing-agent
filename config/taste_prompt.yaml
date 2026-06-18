@@ -1,0 +1,26 @@
+preferred_themes:
+  - AI infrastructure
+  - inference optimization
+  - AI hardware
+  - robotics
+  - developer tools
+  - scientific AI
+  - cross-border AI opportunities
+
+avoid:
+  - pure AI wrapper
+  - no technical artifact
+  - no founder contact path
+  - too late stage
+  - vague market claim
+
+thresholds:
+  shortlist: 70
+  memo: 80
+  draft_outreach: 75
+
+outreach:
+  draft_only: true
+  max_daily_drafts: 5
+  contact_cooldown_days: 30
+

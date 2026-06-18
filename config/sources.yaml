@@ -1,0 +1,18 @@
+sources:
+  - name: yc
+    kind: webpage
+    artifact_type: company
+    url: https://www.ycombinator.com/companies?industry=AI
+  - name: github
+    kind: github
+    artifact_type: repo
+    query: AI inference robotics
+  - name: arxiv
+    kind: arxiv
+    artifact_type: paper
+    query: cat:cs.AI OR cat:cs.LG OR cat:cs.RO
+  - name: x_search
+    kind: x
+    artifact_type: post
+    query: AI infra robotics launch
+
