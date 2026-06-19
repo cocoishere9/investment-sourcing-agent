@@ -31,6 +31,12 @@ PYTHONPATH=src python3 -m sourcing_agent.cli review-queue
 - `config/scoring_rubrics.yaml`：不同内容类型的打分项、权重和扣分规则。
 - `config/sources.yaml`：不同来源和默认 artifact type。
 
+## 文档
+
+- `docs/使用说明.md`：如何运行、如何验收、当前能力边界。
+- `docs/架构说明.md`：工作流节点、脚本映射、大模型节点设计、`score.py` 打分规则。
+- `docs/执行清单.md`：已完成事项和逐项检查方式。
+
 ## 可信边界
 
 - 系统不会自动发邮件，只生成草稿。
