@@ -14,8 +14,8 @@ The agent should help discover and triage public signals from sources such as YC
 
 - Entry point: Codex plus a custom skill, not a user-facing CLI.
 - Agent structure: one total-control skill plus a subagent manual plus local deterministic modules underneath.
-- Subagent manual location: `agents/investment-sourcing-agent/AGENTS.md`, explicitly scoped to this subagent only.
-- Skill location: `skills/investment-sourcing-agent/SKILL.md`.
+- Subagent manual location: `agents/investment-sourcing-agent/investment-sourcing-agent.agent.md`, explicitly scoped to this subagent only.
+- Skill location: `skills/investment-sourcing-agent/investment-sourcing-agent.skill.md`.
 - Source scope: high-certainty sources first: YC, GitHub, arXiv, Hacker News, and configured webpages or RSS.
 - Per-source cap: 20 fetched items by default.
 - Scheduling: design for future scheduling, but do not create a real recurring automation in the first version.
